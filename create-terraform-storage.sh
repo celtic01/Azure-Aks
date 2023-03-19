@@ -1,7 +1,7 @@
 #!/bin/sh
 
 RESOURCE_GROUP_NAME="terraform-rg"
-STORAGE_ACCOUNT_NAME="tfstate"
+STORAGE_ACCOUNT_NAME="mystorageandreibortas"
 
 # Create Resource Group
 az group create -l uksouth -n $RESOURCE_GROUP_NAME
