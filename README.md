@@ -4,3 +4,4 @@ This repository aims to reflect my changes and improvements that I want to add t
 ```./create-terraform-storage.sh```
 2. Create an azure AD group for aks admins and add current logged in user as a member.
 ```./create-azure-ad-group.sh```
+3. Create a resource group for ACR and ACR using terraform.
