@@ -1,13 +1,14 @@
-#!/bin/sh
+#!/bin/bash
 
-RESOURCE_GROUP_NAME="terraform-rg"
-STORAGE_ACCOUNT_NAME="mystorageandreibortas"
+RESOURCE_GROUP_NAME=terraform-rg
+STORAGE_ACCOUNT_NAME=mystorageandreibortas
+CONTAINER_NAME=tfstate
 
-# Create Resource Group
-az group create -l uksouth -n $RESOURCE_GROUP_NAME
+# Create resource group
+az group create --name $RESOURCE_GROUP_NAME --location uksouth
 
-# Create Storage Account
-az storage account create -n $STORAGE_ACCOUNT_NAME -g $RESOURCE_GROUP_NAME -l uksouth --sku Standard_LRS
+# Create storage account
+az storage account create --resource-group $RESOURCE_GROUP_NAME --name $STORAGE_ACCOUNT_NAME -l uksouth --sku Standard_LRS --encryption-services blob
 
-# Create Storage Account blob
-az storage container create  --name tfstate --account-name $STORAGE_ACCOUNT_NAME
+# Create blob container
+az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOUNT_NAME
