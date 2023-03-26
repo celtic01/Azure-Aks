@@ -3,7 +3,7 @@ terraform {
     resource_group_name  = "terraform-rg"
     storage_account_name = "mystorageandreibortas"
     container_name       = "tfstate"
-    key                  = "logs-terraform.tfstate"
+    key                  = "aks-terraform.tfstate"
   }
   required_providers {
     azurerm = {
@@ -34,7 +34,7 @@ data "azurerm_subnet" "appgwsubnet" {
 }
 
 data "azurerm_log_analytics_workspace" "workspace" {
-  name                = "${var.name}-la"
+  name                = "${var.log_analytics_workspace_name}"
   resource_group_name = data.azurerm_resource_group.resource_group.name
 }
 
@@ -68,31 +68,26 @@ resource "azurerm_kubernetes_cluster" "k8s" {
     type = "SystemAssigned"
   }
 
-  addon_profile {
-    oms_agent {
-      enabled                    = var.addons.oms_agent
-      log_analytics_workspace_id = data.azurerm_log_analytics_workspace.workspace.id
-    }
-
-    ingress_application_gateway {
-      enabled   = var.addons.ingress_application_gateway
-      subnet_id = data.azurerm_subnet.appgwsubnet.id
-    }
-
+  oms_agent {
+    log_analytics_workspace_id = data.azurerm_log_analytics_workspace.workspace.id
   }
+
+  ingress_application_gateway {
+    subnet_id = data.azurerm_subnet.appgwsubnet.id
+  }
+
+
 
   network_profile {
     load_balancer_sku = "standard"
     network_plugin    = "azure"
   }
 
-  role_based_access_control {
-    enabled = var.kubernetes_cluster_rbac_enabled
+  azure_active_directory_role_based_access_control {
 
-    azure_active_directory {
-      managed                = true
-      admin_group_object_ids = [var.aks_admins_group_object_id]
-    }
+    managed                = true
+    admin_group_object_ids = [var.aks_admins_group_object_id]
+
   }
 
 }
@@ -114,7 +109,7 @@ resource "azurerm_role_assignment" "node_infrastructure_update_scale_set" {
 }
 
 data "azurerm_container_registry" "example" {
-  name                = "${var.ACR-name}"
+  name                = var.ACRname
   resource_group_name = data.azurerm_resource_group.resource_group.name
 }
 

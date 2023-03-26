@@ -3,7 +3,7 @@ terraform {
     resource_group_name  = "terraform-rg"
     storage_account_name = "mystorageandreibortas"
     container_name       = "tfstate"
-    key                  = "vnet-terraform.tfstate"
+    key                  = "log-terraform.tfstate"
   }
   required_providers {
     azurerm = {
