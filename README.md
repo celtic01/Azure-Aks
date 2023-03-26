@@ -9,3 +9,13 @@ This repository aims to reflect my changes and improvements that I want to add t
 ``` terraform init ```
 ``` terraform plan ```
 ``` terraform apply ```
+4. Create a VNET and 2 subnets
+``` cd terraform-workspace/VNET ```
+``` terraform init ```
+``` terraform plan ```
+``` terraform apply ```
+5. Create a Log Analytics workspace and solution
+``` cd terraform-workspace/Log-Analytics ```
+``` terraform init ```
+``` terraform plan ```
+``` terraform apply ```
