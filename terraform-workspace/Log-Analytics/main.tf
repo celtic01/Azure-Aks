@@ -30,7 +30,6 @@ resource "random_string" "random" {
   special          = false
 }
 
-# using resource group from ./terraform-workspace/ACR
 data "azurerm_resource_group" "resource_group" {
   name     = "${var.name}-rg"
 }

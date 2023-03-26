@@ -19,3 +19,8 @@ This repository aims to reflect my changes and improvements that I want to add t
 ``` terraform init ```
 ``` terraform plan ```
 ``` terraform apply ```
+5. Create AKS cluster and assign roles to kubelet (acr-pull and scale-up;scale-down)
+``` cd terraform-workspace/AKS ```
+``` terraform init ```
+``` terraform plan ```
+``` terraform apply ```
