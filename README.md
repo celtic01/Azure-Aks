@@ -24,3 +24,8 @@ This repository aims to reflect my changes and improvements that I want to add t
 ``` terraform init ```
 ``` terraform plan ```
 ``` terraform apply ```
+6. Dockerize uber app
+``` docker build -t uberapp . ```
+``` docker tag uberapp {name-of-acr}.azurecr.io/uberapp:v1 ```
+``` az login acr --{name-of-acr} ```
+``` docker push {name-of-acr}.azurecr.io/uberapp:v1 ```
