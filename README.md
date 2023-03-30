@@ -58,3 +58,9 @@ az login acr --{name-of-acr}
 
 docker push {name-of-acr}.azurecr.io/uberapp:v1
 ```
+7. Create deployment, ingress and service
+```
+cd ./kubernetes
+
+kubectl apply -f deployment.yml
+```
