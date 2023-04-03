@@ -1,7 +1,6 @@
 # First stage: build stage
 FROM python:3.9.16-slim AS build
 
-RUN mkdir /build
 WORKDIR /build
 
 COPY app /build
@@ -23,7 +22,7 @@ WORKDIR /app
 
 COPY --from=build /usr/local/lib/python3.9/site-packages /usr/local/lib/python3.9/site-packages
 
-COPY app /app
+COPY --from=build /build /app
 
 EXPOSE 5000
 

@@ -58,9 +58,18 @@ az login acr --{name-of-acr}
 
 docker push {name-of-acr}.azurecr.io/uberapp:v1
 ```
-7. Create deployment, ingress and service
+7. Install ARGOCD 
 ```
-cd ./kubernetes
+az aks get-credentials --resource-group infrastructure-rg --name infrastructureaks
 
-kubectl apply -f deployment.yml
+kubectl create namespace argocd
+
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl edit svc argocd-server -n argocd
+
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo (get pw)
+
+kubectl apply -f https://github.com/celtic01/argocd-uberapp/blob/main/helm/templates/uber-app.yml
+
 ```
