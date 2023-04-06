@@ -70,6 +70,10 @@ kubectl edit svc argocd-server -n argocd
 
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo (get pw)
 
+{powershell}
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String((kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}")))
+
+
 kubectl apply -f https://github.com/celtic01/argocd-uberapp/blob/main/helm/templates/uber-app.yml
 
 ```
