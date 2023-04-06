@@ -54,7 +54,7 @@ docker build -t uberapp .
 
 docker tag uberapp {name-of-acr}.azurecr.io/uberapp:v1
 
-az login acr --{name-of-acr}
+az acr login --name {name-of-acr}
 
 docker push {name-of-acr}.azurecr.io/uberapp:v1
 ```
