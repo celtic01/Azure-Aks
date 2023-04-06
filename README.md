@@ -74,6 +74,6 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String((kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}")))
 
 
-kubectl apply -f https://github.com/celtic01/argocd-uberapp/blob/main/helm/templates/uber-app.yml
+kubectl apply -f https://github.com/celtic01/argocd-uberapp/blob/main/helm/templates/uber-app.yaml
 
 ```
