@@ -65,16 +65,14 @@ az aks get-credentials --resource-group infrastructure-rg --name infrastructurea
 kubectl create namespace argocd
 
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
 ```
 7.1 ARGOCD needs to be exposed, for this example I modified the service from a ClusterIP to a LoadBalancer
 ```
 kubectl edit svc argocd-server -n argocd
-
 ```
 Get password of ARGOCD
 ```
-
+{bash}
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo (get pw)
 
 {powershell}
@@ -83,13 +81,10 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 Apply helm template of a CRD argo app from my other repo, which points to the helm template of uber-app (separate repo)
 ```
 kubectl apply -f https://github.com/celtic01/argocd-uberapp/blob/main/helm/templates/uber-app.yaml
-
 ```
 8. Uber app is stored in a separate repository, I have created the CI in github actions for it in order to push the image to ACR and update the app helm template which was in the same repo
 ```
-
 https://github.com/celtic01/uber-app-clone/blob/main/.github/workflows/build-push.yml
-
 ```
 
 
