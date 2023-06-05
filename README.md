@@ -1,4 +1,4 @@
-This repository showcases my improvements that I want to add to the original project for the purpose of going more in depth(https://github.com/thomast1906/DevOps-The-Hard-Way-Azure).
+This repository showcases the improvements I made to the original project DevOps-The-Hard-Way-Azure. The purpose of these enhancements is to dive deeper into various technologies and concepts such as Argo CD, Kubernetes, GitHub Actions, Terraform, and Azure. The following steps outline the changes and additions I made to the project:(https://github.com/thomast1906/DevOps-The-Hard-Way-Azure).
 
 1. Create a resource group, a storage account and a storage blob to store remote terraform state.
 ```
