@@ -1,4 +1,4 @@
-This repository aims to reflect my changes and improvements that I want to add to the original project(https://github.com/thomast1906/DevOps-The-Hard-Way-Azure).
+This repository showcases my improvements that I want to add to the original project for the purpose of going more in depth(https://github.com/thomast1906/DevOps-The-Hard-Way-Azure).
 
 1. Create a resource group, a storage account and a storage blob to store remote terraform state.
 ```
@@ -86,5 +86,5 @@ kubectl apply -f https://github.com/celtic01/argocd-uberapp/blob/main/helm/templ
 ```
 https://github.com/celtic01/uber-app-clone/blob/main/.github/workflows/build-push.yml
 ```
-
+These improvements have provided me with valuable hands-on experience in using Argo CD, Kubernetes, GitHub Actions, Terraform, and Azure. By integrating Argo CD and GitHub Actions into the existing Uber app Python clone, I was able to enhance the project's functionality and gain deeper insights into these technologies.
 
